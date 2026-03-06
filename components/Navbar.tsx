@@ -14,7 +14,7 @@ import {
 
 const navLinks = [
   { href: "/", label: "Library" },
-  { href: "/docs/new", label: "Add New" },
+  { href: "/books/new", label: "Add New" },
 ];
 
 const Navbar = () => {
