@@ -41,7 +41,7 @@ const UploadForm = () => {
   const onSubmit = async (data: BookUploadFormValues) => {
     setIsSubmitting(true);
     try {
-      // TODO: Implement actual upload logic
+      
       console.log("Form data:", data);
       await new Promise((resolve) => setTimeout(resolve, 2000));
     } catch (error) {
