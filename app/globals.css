@@ -8,6 +8,37 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-mona-sans);
   --font-serif: var(--font-ibm-plex-serif);
+  
+  /* Feature Colors */
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-tertiary: var(--bg-tertiary);
+  --color-bg-card: var(--bg-card);
+  
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  
+  --color-accent-blue: var(--accent-blue);
+  --color-accent-blue-hover: var(--accent-blue-hover);
+  --color-accent-light: var(--accent-light);
+  
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
+  
+  --color-border-subtle: var(--border-subtle);
+  --color-border-medium: var(--border-medium);
+
+  /* Shadows */
+  --shadow-soft-sm: var(--shadow-soft-sm);
+  --shadow-soft: var(--shadow-soft);
+  --shadow-soft-md: var(--shadow-soft-md);
+  --shadow-soft-lg: var(--shadow-soft-lg);
+
+  /* Spacing */
+  --spacing-18: 4.5rem;
+
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -48,118 +79,119 @@
 }
 
 :root {
-  --radius: 0.625rem;
+  --radius: 0.75rem;
 
-  /* Warm Literary Backgrounds */
-  --bg-primary: #f8f4e9;
-  --bg-secondary: #f3e4c7;
-  --bg-tertiary: #fff6e5;
-  --bg-card: #ffffff;
+  /* Apple Design System Colors - Light */
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F5F5F7;
+  --bg-tertiary: #FBFBFD;
+  --bg-card: #FFFFFF;
 
-  /* Warm Text Colors */
-  --text-primary: #212a3b;
-  --text-secondary: #3d485e;
-  --text-muted: #222c37;
+  /* Typography */
+  --text-primary: #1D1D1F;
+  --text-secondary: #424245;
+  --text-muted: #86868B;
 
-  /* Warm Accent */
-  --accent-warm: #212a3b;
-  --accent-warm-hover: #3d485e;
-  --accent-light: #fff6e5;
+  /* Accents */
+  --accent-blue: #0066CC;
+  --accent-blue-hover: #0071E3;
+  --accent-light: #F5F5F7;
 
   /* Semantic Colors */
-  --success: #7c9a82;
-  --warning: #d4a853;
+  --success: #28CD41;
+  --warning: #FF9F0A;
+  --error: #FF3B30;
 
-  /* Borders */
-  --border-subtle: rgba(33, 42, 59, 0.12);
-  --border-medium: rgba(33, 42, 59, 0.2);
+  /* Borders - Hairline style */
+  --border-subtle: rgba(0, 0, 0, 0.08);
+  --border-medium: rgba(0, 0, 0, 0.12);
 
-  /* Soft Shadows */
-  --shadow-soft-sm: 0 1px 2px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.06);
-  --shadow-soft: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.08);
-  --shadow-soft-md: 0 2px 4px rgba(0, 0, 0, 0.04), 0 8px 16px rgba(0, 0, 0, 0.08);
-  --shadow-soft-lg: 0 4px 12px rgba(0, 0, 0, 0.08), 0 16px 32px rgba(0, 0, 0, 0.12);
-  --shadow-book: 0px 10px 30px 0px rgba(0, 0, 0, 0.1);
+  /* Shadows - Minimalist */
+  --shadow-soft-sm: 0 2px 4px rgba(0, 0, 0, 0.02);
+  --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.05);
+  --shadow-soft-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --shadow-soft-lg: 0 16px 40px rgba(0, 0, 0, 0.12);
+  --shadow-book: 0px 20px 40px rgba(0, 0, 0, 0.1);
 
   /* Base theme colors */
-  --background: #f8f4e9;
-  --foreground: #212a3b;
-  --card: #ffffff;
-  --card-foreground: #212a3b;
-  --popover: #ffffff;
-  --popover-foreground: #212a3b;
-  --primary: #212a3b;
-  --primary-foreground: #ffffff;
-  --secondary: #f3e4c7;
-  --secondary-foreground: #212a3b;
-  --muted: #f3e4c7;
-  --muted-foreground: #3d485e;
-  --accent: #fff6e5;
-  --accent-foreground: #212a3b;
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: rgba(33, 42, 59, 0.12);
-  --input: rgba(33, 42, 59, 0.12);
-  --ring: #212a3b;
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: #ffffff;
-  --sidebar-foreground: #212a3b;
-  --sidebar-primary: #212a3b;
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #f3e4c7;
-  --sidebar-accent-foreground: #212a3b;
-  --sidebar-border: rgba(33, 42, 59, 0.12);
-  --sidebar-ring: #212a3b;
+  --background: #FFFFFF;
+  --foreground: #1D1D1F;
+  --card: #FFFFFF;
+  --card-foreground: #1D1D1F;
+  --popover: #FFFFFF;
+  --popover-foreground: #1D1D1F;
+  --primary: #1D1D1F;
+  --primary-foreground: #FFFFFF;
+  --secondary: #F5F5F7;
+  --secondary-foreground: #1D1D1F;
+  --muted: #F5F5F7;
+  --muted-foreground: #86868B;
+  --accent: #F5F5F7;
+  --accent-foreground: #1D1D1F;
+  --destructive: #FF3B30;
+  --border: rgba(0, 0, 0, 0.12);
+  --input: rgba(0, 0, 0, 0.08);
+  --ring: #0066CC;
+  --chart-1: #0066CC;
+  --chart-2: #28CD41;
+  --chart-3: #FF9F0A;
+  --chart-4: #AF52DE;
+  --chart-5: #FF3B30;
+  --sidebar: #F5F5F7;
+  --sidebar-foreground: #1D1D1F;
+  --sidebar-primary: #0066CC;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #FFFFFF;
+  --sidebar-accent-foreground: #1D1D1F;
+  --sidebar-border: rgba(0, 0, 0, 0.1);
+  --sidebar-ring: #0066CC;
 
   /* Brand color */
-  --blue: #212a3b;
+  --blue: #0066CC;
 
-  /* Brand accent (warm brown) - for active states and CTAs */
-  --color-brand: #663820;
-  --color-brand-hover: #7a4528;
+  /* Apple Brand CTAs */
+  --color-brand: #0066CC;
+  --color-brand-hover: #0071E3;
 
   /* Layout dimensions */
-  --navbar-height: 74px;
+  --navbar-height: 52px;
 }
 
 .dark {
-  --background: #1a1918;
-  --foreground: #f7f4ee;
-  --card: #252321;
-  --card-foreground: #f7f4ee;
-  --popover: #252321;
-  --popover-foreground: #f7f4ee;
-  --primary: #f7f4ee;
-  --primary-foreground: #1a1918;
-  --secondary: #2d2a26;
-  --secondary-foreground: #f7f4ee;
-  --muted: #2d2a26;
-  --muted-foreground: #8a847a;
-  --accent: #2d2a26;
-  --accent-foreground: #f7f4ee;
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: rgba(247, 244, 238, 0.1);
-  --input: rgba(247, 244, 238, 0.15);
-  --ring: #c8553d;
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: #252321;
-  --sidebar-foreground: #f7f4ee;
-  --sidebar-primary: #c8553d;
-  --sidebar-primary-foreground: #f7f4ee;
-  --sidebar-accent: #2d2a26;
-  --sidebar-accent-foreground: #f7f4ee;
-  --sidebar-border: rgba(247, 244, 238, 0.1);
-  --sidebar-ring: #c8553d;
+  --background: #000000;
+  --foreground: #F5F5F7;
+  --card: #1D1D1F;
+  --card-foreground: #F5F5F7;
+  --popover: #1D1D1F;
+  --popover-foreground: #F5F5F7;
+  --primary: #F5F5F7;
+  --primary-foreground: #000000;
+  --secondary: #2D2D2F;
+  --secondary-foreground: #F5F5F7;
+  --muted: #2D2D2F;
+  --muted-foreground: #86868B;
+  --accent: #2D2D2F;
+  --accent-foreground: #F5F5F7;
+  --destructive: #FF453A;
+  --border: rgba(255, 255, 255, 0.15);
+  --input: rgba(255, 255, 255, 0.1);
+  --ring: #0A84FF;
+  --chart-1: #0A84FF;
+  --chart-2: #30D158;
+  --chart-3: #FF9F0A;
+  --chart-4: #BF5AF2;
+  --chart-5: #FF453A;
+  --sidebar: #1D1D1F;
+  --sidebar-foreground: #F5F5F7;
+  --sidebar-primary: #0A84FF;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #2D2D2F;
+  --sidebar-accent-foreground: #F5F5F7;
+  --sidebar-border: rgba(255, 255, 255, 0.1);
+  --sidebar-ring: #0A84FF;
 
-  /* Brand color - terracotta */
-  --blue: #c8553d;
+  /* Brand color */
+  --blue: #0A84FF;
 }
 
 @layer base {
@@ -176,7 +208,7 @@
     @apply max-w-7xl px-5 mx-auto w-full;
   }
   .container {
-    @apply pt-[94px] pb-18 min-h-screen;
+    @apply pt-[72px] pb-18 min-h-screen bg-bg-primary;
   }
   .navItem {
     @apply px-1 sm:px-3 text-sm sm:text-base font-medium flex items-center cursor-pointer text-[var(--text-primary)];
@@ -212,8 +244,7 @@
     @apply relative z-20 flex flex-col justify-center items-center p-7;
   }
   .form-btn {
-    @apply !w-full h-14 rounded-[10px] bg-[#663820] cursor-pointer hover:bg-[#7a4528] text-xl text-white font-bold transition-colors;
-    font-family: 'IBM Plex Serif', serif;
+    @apply !w-full h-12 rounded-full bg-accent-blue cursor-pointer hover:bg-accent-blue-hover text-lg text-white font-semibold transition-all;
   }
   .loading-wrapper {
     @apply fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm;
@@ -243,7 +274,7 @@
     @apply !w-full !h-12 rounded-lg;
   }
   .volume {
-    @apply !ml-auto w-4 h-4 animate-pulse text-[var(--accent-warm)];
+    @apply !ml-auto w-4 h-4 animate-pulse text-accent-blue;
   }
   .select-content {
     @apply rounded-xl border border-[var(--border-subtle)] max-h-[400px] shadow-[var(--shadow-soft)];
@@ -268,16 +299,15 @@
     box-shadow: var(--shadow-soft-lg);
   }
   .bg-brand {
-    @apply bg-[var(--accent-warm)];
+    @apply bg-accent-blue;
   }
 
   /* Button utilities */
   .btn-primary {
-    @apply inline-flex items-center justify-center px-6 py-3 bg-[var(--color-brand)] hover:bg-[var(--color-brand-hover)] text-white font-bold rounded-[10px] transition-colors;
-    font-family: 'IBM Plex Serif', serif;
+    @apply inline-flex items-center justify-center px-6 py-2 bg-accent-blue hover:bg-accent-blue-hover text-white font-semibold rounded-full transition-all;
   }
   .btn-secondary {
-    @apply inline-flex items-center justify-center px-6 py-3 bg-white hover:bg-gray-50 text-[var(--text-secondary)] font-medium rounded-[10px] transition-colors;
+    @apply inline-flex items-center justify-center px-6 py-2 bg-secondary hover:bg-gray-100 text-text-primary font-medium rounded-full transition-all;
   }
 
   /* Layout utilities */
@@ -293,13 +323,13 @@
     @apply border-[var(--color-brand)];
   }
   .page-title-xl {
-    @apply text-4xl md:text-5xl font-semibold text-black tracking-[-0.02em] leading-[54px] font-serif;
+    @apply text-4xl md:text-5xl font-bold text-text-primary tracking-tight leading-tight;
   }
   .section-title {
-    @apply text-2xl md:text-[30px] font-semibold text-black leading-[30px] font-serif;
+    @apply text-2xl md:text-3xl font-bold text-text-primary leading-tight;
   }
   .book-title-lg {
-    @apply text-[30px] font-semibold text-black leading-9 mb-2 font-serif;
+    @apply text-2xl md:text-3xl font-bold text-text-primary leading-tight mb-2;
   }
   .subtitle {
     @apply text-xl text-[var(--text-secondary)] leading-7;
@@ -312,13 +342,13 @@
      NAVBAR COMPONENT
      =========================================== */
   .logo-text {
-    @apply font-semibold text-xl hidden sm:block text-black;
+    @apply font-bold text-xl hidden sm:block text-text-primary tracking-tight;
   }
   .nav-link-base {
-    @apply text-base font-medium leading-6 transition-all;
+    @apply text-sm font-medium transition-all text-text-secondary hover:text-text-primary;
   }
   .nav-link-active {
-    @apply text-[var(--color-brand)] border-b-2 border-[var(--color-brand)] pb-0.5;
+    @apply text-text-primary font-semibold;
   }
   .nav-btn {
     @apply text-base font-medium text-black hover:opacity-70 transition-opacity cursor-pointer;
@@ -349,13 +379,13 @@
     @apply text-red-400 hover:text-red-600 transition-colors;
   }
   .warning-banner {
-    @apply w-full mb-4 p-3 bg-[var(--accent-light)] border border-[var(--accent-warm)] rounded-xl;
+    @apply w-full mb-4 p-3 bg-accent-light border border-accent-blue rounded-xl;
   }
   .warning-banner-content {
     @apply flex items-center gap-2;
   }
   .warning-banner-icon {
-    @apply w-5 h-5 text-[var(--accent-warm)];
+    @apply w-5 h-5 text-accent-blue;
   }
   .warning-banner-text {
     @apply text-[var(--text-primary)] font-medium;
@@ -384,10 +414,10 @@
      VAPI CONTROLS COMPONENT
      =========================================== */
   .vapi-header-card {
-    @apply flex items-center gap-6 bg-[#f3e4c7] rounded-[14px] p-6 relative overflow-hidden;
+    @apply flex items-center gap-6 bg-bg-secondary rounded-2xl p-6 relative overflow-hidden border border-border-subtle;
   }
   .vapi-compact-header {
-    @apply flex items-center gap-2 bg-[#f3e4c7] rounded-[14px] p-3 mb-3;
+    @apply flex items-center gap-2 bg-bg-secondary rounded-2xl p-3 mb-3 border border-border-subtle;
   }
   .vapi-transcript-wrapper {
     @apply min-h-[400px] max-h-[60vh] flex flex-col;
@@ -484,19 +514,19 @@
      BOOKS LIBRARY COMPONENT
      =========================================== */
   .library-hero-card {
-    @apply bg-[#f3e4c7] rounded-[14px] p-5 md:p-6 lg:py-6 lg:px-10 relative overflow-hidden flex items-center;
+    @apply bg-bg-secondary rounded-3xl p-6 md:p-8 lg:p-12 relative overflow-hidden flex items-center border border-border-subtle;
   }
   .library-hero-content {
-    @apply flex flex-col items-center text-center lg:items-center lg:text-left lg:flex-row lg:justify-between gap-4 lg:gap-6 w-full;
+    @apply flex flex-col items-center text-center lg:items-center lg:text-left lg:flex-row lg:justify-between gap-6 w-full;
   }
   .library-hero-text {
-    @apply flex-1 max-w-full lg:max-w-[400px] flex flex-col gap-3 lg:gap-4 items-center lg:items-start justify-center z-10;
+    @apply flex-1 max-w-full lg:max-w-[500px] flex flex-col gap-4 items-center lg:items-start justify-center z-10;
   }
   .library-hero-title {
-    @apply text-[26px] md:text-3xl lg:text-4xl font-semibold text-black tracking-[-0.02em] leading-[32px] md:leading-[42px] font-serif;
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary tracking-tight leading-tight;
   }
   .library-hero-description {
-    @apply text-sm md:text-base text-[#3d485e] leading-5 md:leading-6;
+    @apply text-base md:text-lg text-text-secondary leading-relaxed;
   }
   .library-hero-illustration {
     @apply flex items-center justify-center mt-2 lg:hidden;
@@ -505,22 +535,10 @@
     @apply hidden lg:flex items-center justify-center flex-1 max-w-[400px];
   }
   .library-cta-primary {
-    @apply inline-flex items-center justify-center gap-2 bg-white text-[var(--text-primary)] px-5 py-3 rounded-[10px] font-bold text-base md:text-xl transition-all w-full lg:w-fit;
-    font-family: 'IBM Plex Serif', serif;
-
-    &:hover {
-      @apply bg-gray-50;
-      box-shadow: var(--shadow-soft);
-    }
+    @apply inline-flex items-center justify-center gap-2 bg-accent-blue text-white px-6 py-2.5 rounded-full font-semibold text-base transition-all w-full lg:w-fit hover:bg-accent-blue-hover hover:scale-[1.02] active:scale-[0.98];
   }
   .library-cta-secondary {
-    @apply inline-flex items-center gap-2 bg-white text-[var(--text-primary)] px-5 py-3 rounded-[10px] font-bold text-xl transition-all;
-    font-family: 'IBM Plex Serif', serif;
-
-    &:hover {
-      @apply bg-gray-50;
-      box-shadow: var(--shadow-soft);
-    }
+    @apply inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm border border-border-subtle text-text-primary px-6 py-2.5 rounded-full font-semibold text-base transition-all hover:bg-white;
   }
   .library-steps-card {
     @apply bg-white p-4 rounded-[10px];
@@ -534,7 +552,7 @@
     list-style: none;
   }
   .library-step-number {
-    @apply w-8 h-8 min-w-8 min-h-8 rounded-full bg-[#fff6e5] border border-[var(--text-primary)] text-[var(--text-primary)] flex items-center justify-center font-semibold text-sm;
+    @apply w-8 h-8 min-w-8 min-h-8 rounded-full bg-accent-light border border-text-primary text-text-primary flex items-center justify-center font-semibold text-sm;
   }
   .library-step-title {
     @apply font-semibold text-base text-[#222c37] leading-6;
@@ -592,10 +610,10 @@
     @apply max-w-[80%] px-6 py-4 text-base font-medium leading-7 rounded-2xl;
   }
   .transcript-bubble-user {
-    @apply bg-[#663820] text-white rounded-br-sm;
+    @apply bg-accent-blue text-white rounded-2xl rounded-br-none;
   }
   .transcript-bubble-assistant {
-    @apply bg-[#f3e4c7] text-[#212a3b] rounded-bl-sm;
+    @apply bg-bg-secondary text-text-primary rounded-2xl rounded-bl-none border border-border-subtle;
   }
   .transcript-cursor {
     @apply inline-block w-0.5 h-5 ml-1 bg-black animate-pulse;
@@ -626,7 +644,7 @@
     }
   }
   .voice-selector-option-selected {
-    @apply bg-[var(--accent-light)] border-[var(--accent-warm)];
+    @apply bg-accent-light border-accent-blue;
   }
   .voice-selector-option-default {
     @apply bg-white;
@@ -738,12 +756,12 @@
   border: none !important;
   box-shadow: var(--shadow-soft) !important;
   border-radius: 0.75rem !important;
-  background-color: #212a3b !important;
+  background-color: #1D1D1F !important;
   color: white !important;
 }
 
 .cl-formButtonPrimary:hover {
-  background-color: #3d485e !important;
+  background-color: #424245 !important;
   box-shadow: var(--shadow-soft-md) !important;
 }
 
@@ -778,8 +796,8 @@
 }
 
 .cl-formFieldInput:focus {
-  border-color: #212a3b !important;
-  box-shadow: var(--shadow-soft), 0 0 0 2px rgba(33, 42, 59, 0.1) !important;
+  border-color: #0066CC !important;
+  box-shadow: var(--shadow-soft), 0 0 0 2px rgba(0, 102, 204, 0.1) !important;
 }
 
 /* Clerk Auth Social Buttons with Soft Shadow */
@@ -793,7 +811,7 @@
 
 .cl-socialButtonsBlockButton:hover {
   box-shadow: var(--shadow-soft) !important;
-  background-color: var(--bg-secondary) !important;
+  background-color: #F5F5F7 !important;
 }
 
 /* Pricing cards container */
@@ -877,7 +895,7 @@ button[data-variant='unstyled'] *,
 .cl-tabButton *,
 [role='tablist'] button,
 [role='tablist'] button * {
-  color: #212a3b !important;
+  color: #1D1D1F !important;
 }
 
 /* Card sections have white background */
@@ -891,7 +909,7 @@ button[data-variant='unstyled'] *,
   height: 3rem !important;
   min-height: 3rem !important;
   font-size: 1.125rem !important;
-  background-color: #212a3b !important;
+  background-color: #1D1D1F !important;
   color: white !important;
   font-weight: 500 !important;
   border: none !important;
@@ -902,7 +920,7 @@ button[data-variant='unstyled'] *,
 }
 
 .clerk-pricing-table-wrapper button:hover {
-  background-color: #3d485e !important;
+  background-color: #424245 !important;
   box-shadow: var(--shadow-soft-md) !important;
   transform: translateY(-1px);
 }
@@ -911,8 +929,8 @@ button[data-variant='unstyled'] *,
 .clerk-pricing-table-wrapper button:disabled,
 .clerk-pricing-table-wrapper button[disabled],
 .clerk-pricing-table-wrapper button[aria-disabled='true'] {
-  background-color: #f3e4c7 !important;
-  color: #212a3b !important;
+  background-color: #F5F5F7 !important;
+  color: #1D1D1F !important;
   cursor: default !important;
   box-shadow: none !important;
   opacity: 1 !important;
@@ -924,14 +942,14 @@ button[data-variant='unstyled'] *,
    Note: This uses :first-child which assumes active plan is always first.
    If Clerk changes the order, this may highlight the wrong card. */
 .cl-pricingTableCard:first-child {
-  border: 2px solid #663820 !important;
+  border: 2px solid #0066CC !important;
 }
 
 /* Style the Active badge with better contrast */
 .cl-badge,
 .cl-pricingTableCard [class*='badge'],
 .cl-pricingTableCard span[class*='Badge'] {
-  background-color: #663820 !important;
+  background-color: #0066CC !important;
   color: white !important;
   font-weight: 600 !important;
   padding: 0.25rem 0.75rem !important;
@@ -947,8 +965,8 @@ button[data-variant='unstyled'] *,
   text-align: center;
   padding: 0.75rem 1.5rem;
   margin-top: 1rem;
-  background-color: #f3e4c7 !important;
-  color: #212a3b !important;
+  background-color: #F5F5F7 !important;
+  color: #1D1D1F !important;
   font-weight: 600;
   border-radius: 0.75rem;
   font-size: 1.125rem;

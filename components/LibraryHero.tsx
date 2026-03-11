@@ -5,71 +5,70 @@ import Link from 'next/link'
 
 const LibraryHero = () => {
   return (
-    <div className="library-hero-card mb-10 md:mb-16">
+    <section className="library-hero-card">
       <div className="library-hero-content">
-        {/* Left Section */}
         <div className="library-hero-text">
           <h1 className="library-hero-title">Your Library</h1>
           <p className="library-hero-description">
-            Convert your books into interactive AI conversations.
-            Listen, learn, and discuss your favorite reads.
+            Experience your books in a whole new way. High-fidelity AI narration and interactive conversations, all in one place.
           </p>
-          <Link href="/docs/new" className="library-cta-primary">
-            + Add new book
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 mt-2 w-full lg:w-fit">
+            <Link href="/books/new" className="library-cta-primary">
+              <span className="text-xl mr-1">+</span> Add Book
+            </Link>
+            <Link href="/subscriptions" className="library-cta-secondary">
+              Upgrade Plan
+            </Link>
+          </div>
         </div>
 
-        {/* Center Section - Illustration */}
         <div className="library-hero-illustration-desktop">
           <Image 
             src="/hero-illustration.png" 
             alt="Library Illustration" 
             width={400} 
             height={300}
-            className="object-contain"
+            className="object-contain drop-shadow-2xl"
             priority
           />
         </div>
         
-        {/* Mobile Illustration (visible only on mobile via existing CSS) */}
         <div className="library-hero-illustration">
           <Image 
             src="/hero-illustration.png" 
             alt="Library Illustration" 
             width={280} 
             height={210}
-            className="object-contain"
+            className="object-contain drop-shadow-xl"
           />
         </div>
 
-        {/* Right Section - Steps */}
-        <div className="hidden xl:block min-w-[280px]">
-          <div className="library-steps-card space-y-4">
-            <div className="library-step-item">
-              <span className="library-step-number">1</span>
-              <div>
-                <h3 className="library-step-title">Upload PDF</h3>
-                <p className="library-step-description">Add your book file</p>
-              </div>
-            </div>
-            <div className="library-step-item">
-              <span className="library-step-number">2</span>
-              <div>
-                <h3 className="library-step-title">AI Processing</h3>
-                <p className="library-step-description">We analyze the content</p>
-              </div>
-            </div>
-            <div className="library-step-item">
-              <span className="library-step-number">3</span>
-              <div>
-                <h3 className="library-step-title">Voice Chat</h3>
-                <p className="library-step-description">Discuss with AI</p>
-              </div>
-            </div>
+        {/* Apple-style feature badges instead of steps */}
+        <div className="hidden xl:flex flex-col gap-4 min-w-[240px]">
+          <div className="bg-white/50 backdrop-blur-sm p-4 rounded-2xl border border-white/20 shadow-sm flex items-center gap-3">
+             <div className="size-8 rounded-full bg-accent-blue/10 flex items-center justify-center text-accent-blue font-bold">1</div>
+             <div>
+                <p className="text-sm font-bold text-text-primary">Upload PDF</p>
+                <p className="text-xs text-text-secondary">Instant processing</p>
+             </div>
+          </div>
+          <div className="bg-white/50 backdrop-blur-sm p-4 rounded-2xl border border-white/20 shadow-sm flex items-center gap-3">
+             <div className="size-8 rounded-full bg-accent-blue/10 flex items-center justify-center text-accent-blue font-bold">2</div>
+             <div>
+                <p className="text-sm font-bold text-text-primary">AI Analysis</p>
+                <p className="text-xs text-text-secondary">Deep understanding</p>
+             </div>
+          </div>
+          <div className="bg-white/50 backdrop-blur-sm p-4 rounded-2xl border border-white/20 shadow-sm flex items-center gap-3">
+             <div className="size-8 rounded-full bg-accent-blue/10 flex items-center justify-center text-accent-blue font-bold">3</div>
+             <div>
+                <p className="text-sm font-bold text-text-primary">Voice Interaction</p>
+                <p className="text-xs text-text-secondary">Natural dialogue</p>
+             </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 

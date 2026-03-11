@@ -11,7 +11,7 @@ const page = async () => {
     <main className='wrapper container'>
       <LibraryHero />
 
-      <div className='library-books-grid'>
+      <div className='mt-5 library-books-grid'>
         {
           books.length > 0 ? (
             books.map((book: any) => (

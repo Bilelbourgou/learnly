@@ -182,9 +182,9 @@ const UploadForm = () => {
               name="file"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="form-label">Book PDF File</FormLabel>
+                  <FormLabel className="text-base font-bold text-text-primary mb-2">Book PDF File</FormLabel>
                   <FormControl>
-                    <div>
+                    <div className="group transition-all">
                       <input
                         type="file"
                         ref={pdfInputRef}
@@ -197,14 +197,14 @@ const UploadForm = () => {
                       />
 
                       {selectedFile ? (
-                        <div className="upload-dropzone upload-dropzone-uploaded border border-dashed border-[#8B7355] flex-row gap-3">
-                          <Upload className="w-5 h-5 text-[#663820]" />
-                          <span className="upload-dropzone-text text-[#663820] text-base">
+                        <div className="flex items-center gap-3 p-4 bg-accent-blue/5 border border-accent-blue/20 rounded-2xl animate-in fade-in zoom-in-95 duration-200">
+                          <Upload className="w-5 h-5 text-accent-blue" />
+                          <span className="text-sm font-semibold text-accent-blue truncate flex-1">
                             {selectedFile.name}
                           </span>
                           <button
                             type="button"
-                            className="upload-dropzone-remove ml-auto"
+                            className="p-1 hover:bg-accent-blue/10 rounded-full text-accent-blue transition-colors"
                             onClick={(e) => {
                               e.stopPropagation();
                               field.onChange(undefined);
@@ -212,41 +212,42 @@ const UploadForm = () => {
                                 pdfInputRef.current.value = "";
                             }}
                           >
-                            <X className="w-5 h-5" />
+                            <X className="w-4 h-4" />
                           </button>
                         </div>
                       ) : (
                         <div
-                          className="upload-dropzone border border-dashed border-[var(--border-medium)]"
+                          className="flex flex-col items-center justify-center p-8 border-2 border-dashed border-border-subtle rounded-3xl bg-bg-secondary cursor-pointer hover:border-accent-blue hover:bg-accent-blue/5 transition-all group"
                           onClick={() => pdfInputRef.current?.click()}
                         >
-                          <Upload className="upload-dropzone-icon" />
-                          <span className="upload-dropzone-text">
+                          <div className="w-12 h-12 rounded-full bg-white shadow-soft flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                            <Upload className="w-6 h-6 text-accent-blue" />
+                          </div>
+                          <span className="text-base font-bold text-text-primary">
                             Click to upload PDF
                           </span>
-                          <span className="upload-dropzone-hint">
-                            PDF file (max 50MB)
+                          <span className="text-xs text-text-muted mt-1">
+                            PDF file up to 50MB
                           </span>
                         </div>
                       )}
                     </div>
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className="text-error text-xs font-medium mt-1" />
                 </FormItem>
               )}
             />
 
-            {/* ── Cover Image Upload ── */}
             <FormField
               control={form.control as any}
               name="coverImage"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="form-label">
+                  <FormLabel className="text-base font-bold text-text-primary">
                     Cover Image (Optional)
                   </FormLabel>
                   <FormControl>
-                    <div>
+                    <div className="group transition-all">
                       <input
                         type="file"
                         ref={coverInputRef}
@@ -259,14 +260,14 @@ const UploadForm = () => {
                       />
 
                       {selectedCover ? (
-                        <div className="upload-dropzone upload-dropzone-uploaded border border-dashed border-[#8B7355] flex-row gap-3">
-                          <ImageIcon className="w-5 h-5 text-[#663820]" />
-                          <span className="upload-dropzone-text text-[#663820] text-base">
+                        <div className="flex items-center gap-3 p-4 bg-accent-blue/5 border border-accent-blue/20 rounded-2xl animate-in fade-in zoom-in-95 duration-200">
+                          <ImageIcon className="w-5 h-5 text-accent-blue" />
+                          <span className="text-sm font-semibold text-accent-blue truncate flex-1">
                             {selectedCover.name}
                           </span>
                           <button
                             type="button"
-                            className="upload-dropzone-remove ml-auto"
+                            className="p-1 hover:bg-accent-blue/10 rounded-full text-accent-blue transition-colors"
                             onClick={(e) => {
                               e.stopPropagation();
                               field.onChange(undefined);
@@ -274,26 +275,28 @@ const UploadForm = () => {
                                 coverInputRef.current.value = "";
                             }}
                           >
-                            <X className="w-5 h-5" />
+                            <X className="w-4 h-4" />
                           </button>
                         </div>
                       ) : (
                         <div
-                          className="upload-dropzone border border-dashed border-[var(--border-medium)]"
+                          className="flex flex-col items-center justify-center p-8 border-2 border-dashed border-border-subtle rounded-3xl bg-bg-secondary cursor-pointer hover:border-accent-blue hover:bg-accent-blue/5 transition-all group"
                           onClick={() => coverInputRef.current?.click()}
                         >
-                          <ImageIcon className="upload-dropzone-icon" />
-                          <span className="upload-dropzone-text">
+                          <div className="w-12 h-12 rounded-full bg-white shadow-soft flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                            <ImageIcon className="w-6 h-6 text-accent-blue" />
+                          </div>
+                          <span className="text-base font-bold text-text-primary">
                             Click to upload cover image
                           </span>
-                          <span className="upload-dropzone-hint">
+                          <span className="text-xs text-text-muted mt-1">
                             Leave empty to auto-generate from PDF
                           </span>
                         </div>
                       )}
                     </div>
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className="text-error text-xs font-medium mt-1" />
                 </FormItem>
               )}
             />
@@ -304,16 +307,16 @@ const UploadForm = () => {
               name="title"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="form-label">Title</FormLabel>
+                  <FormLabel className="text-base font-bold text-text-primary">Title</FormLabel>
                   <FormControl>
                     <input
                       {...field}
                       type="text"
-                      className="form-input border-b border-[var(--border-medium)] focus:border-[#663820] outline-none transition-colors"
+                      className="w-full px-5 py-3 bg-bg-secondary rounded-2xl text-base font-medium text-text-primary placeholder:text-text-muted border border-transparent focus:border-accent-blue focus:bg-white outline-none transition-all shadow-sm"
                       placeholder="ex: Rich Dad Poor Dad"
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className="text-error text-xs font-medium mt-1" />
                 </FormItem>
               )}
             />
@@ -324,16 +327,16 @@ const UploadForm = () => {
               name="author"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="form-label">Author Name</FormLabel>
+                  <FormLabel className="text-base font-bold text-text-primary">Author Name</FormLabel>
                   <FormControl>
                     <input
                       {...field}
                       type="text"
-                      className="form-input border-b border-[var(--border-medium)] focus:border-[#663820] outline-none transition-colors"
+                      className="w-full px-5 py-3 bg-bg-secondary rounded-2xl text-base font-medium text-text-primary placeholder:text-text-muted border border-transparent focus:border-accent-blue focus:bg-white outline-none transition-all shadow-sm"
                       placeholder="ex: Robert Kiyosaki"
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage className="text-error text-xs font-medium mt-1" />
                 </FormItem>
               )}
             />
@@ -344,14 +347,14 @@ const UploadForm = () => {
               name="persona"
                render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="form-label">
+                  <FormLabel className="text-base font-bold text-text-primary">
                     Choose Assistant Voice
                   </FormLabel>
                   <FormControl>
                     <div className="space-y-4">
                       {/* Male Voices */}
                       <div>
-                        <p className="text-sm font-medium text-[var(--text-secondary)] mb-3">
+                        <p className="text-sm font-bold text-text-secondary mb-3 uppercase tracking-wider">
                           Male Voices
                         </p>
                         <div className="voice-selector-options">
@@ -362,12 +365,12 @@ const UploadForm = () => {
                               ];
                             const isSelected = field.value === key;
                             return (
-                              <label
+                               <label
                                 key={key}
-                                className={`voice-selector-option ${
+                                className={`flex items-center gap-3 p-4 rounded-2xl cursor-pointer transition-all border ${
                                   isSelected
-                                    ? "voice-selector-option-selected"
-                                    : "voice-selector-option-default"
+                                    ? "bg-accent-blue/5 border-accent-blue shadow-sm"
+                                    : "bg-white border-border-subtle hover:bg-bg-secondary"
                                 }`}
                               >
                                 <input
@@ -378,23 +381,23 @@ const UploadForm = () => {
                                   onChange={() => field.onChange(key)}
                                   className="sr-only"
                                 />
-                                <div className="flex items-center gap-2">
+                                <div className="flex items-center gap-3 w-full">
                                   <div
-                                    className={`w-4 h-4 shrink-0 rounded-full border-2 flex items-center justify-center ${
+                                    className={`w-5 h-5 shrink-0 rounded-full border-2 flex items-center justify-center transition-colors ${
                                       isSelected
-                                        ? "border-[var(--accent-warm)]"
-                                        : "border-gray-300"
+                                        ? "border-accent-blue bg-accent-blue"
+                                        : "border-border-medium bg-transparent"
                                     }`}
                                   >
                                     {isSelected && (
-                                      <div className="w-2 h-2 rounded-full bg-[var(--accent-warm)]" />
+                                      <div className="w-2 h-2 rounded-full bg-white" />
                                     )}
                                   </div>
-                                  <div>
-                                    <p className="font-semibold text-sm text-[var(--text-primary)]">
+                                  <div className="flex-1">
+                                    <p className="font-bold text-sm text-text-primary lowercase tracking-tight">
                                       {voice.name}
                                     </p>
-                                    <p className="text-xs text-[var(--text-secondary)] leading-tight">
+                                    <p className="text-xs text-text-secondary leading-tight mt-0.5">
                                       {voice.description}
                                     </p>
                                   </div>
@@ -407,7 +410,7 @@ const UploadForm = () => {
 
                       {/* Female Voices */}
                       <div>
-                        <p className="text-sm font-medium text-[var(--text-secondary)] mb-3">
+                        <p className="text-sm font-bold text-text-secondary mb-3 uppercase tracking-wider">
                           Female Voices
                         </p>
                         <div className="voice-selector-options">
@@ -418,12 +421,12 @@ const UploadForm = () => {
                               ];
                             const isSelected = field.value === key;
                             return (
-                              <label
+                               <label
                                 key={key}
-                                className={`voice-selector-option ${
+                                className={`flex items-center gap-3 p-4 rounded-2xl cursor-pointer transition-all border ${
                                   isSelected
-                                    ? "voice-selector-option-selected"
-                                    : "voice-selector-option-default"
+                                    ? "bg-accent-blue/5 border-accent-blue shadow-sm"
+                                    : "bg-white border-border-subtle hover:bg-bg-secondary"
                                 }`}
                               >
                                 <input
@@ -434,23 +437,23 @@ const UploadForm = () => {
                                   onChange={() => field.onChange(key)}
                                   className="sr-only"
                                 />
-                                <div className="flex items-center gap-2">
+                                <div className="flex items-center gap-3 w-full">
                                   <div
-                                    className={`w-4 h-4 shrink-0 rounded-full border-2 flex items-center justify-center ${
+                                    className={`w-5 h-5 shrink-0 rounded-full border-2 flex items-center justify-center transition-colors ${
                                       isSelected
-                                        ? "border-[var(--accent-warm)]"
-                                        : "border-gray-300"
+                                        ? "border-accent-blue bg-accent-blue"
+                                        : "border-border-medium bg-transparent"
                                     }`}
                                   >
                                     {isSelected && (
-                                      <div className="w-2 h-2 rounded-full bg-[var(--accent-warm)]" />
+                                      <div className="w-2 h-2 rounded-full bg-white" />
                                     )}
                                   </div>
-                                  <div>
-                                    <p className="font-semibold text-sm text-[var(--text-primary)]">
+                                  <div className="flex-1">
+                                    <p className="font-bold text-sm text-text-primary lowercase tracking-tight">
                                       {voice.name}
                                     </p>
-                                    <p className="text-xs text-[var(--text-secondary)] leading-tight">
+                                    <p className="text-xs text-text-secondary leading-tight mt-0.5">
                                       {voice.description}
                                     </p>
                                   </div>
@@ -471,7 +474,7 @@ const UploadForm = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="form-btn"
+              className="w-full h-12 rounded-full bg-accent-blue text-white font-bold text-lg hover:bg-accent-blue-hover hover:scale-[1.01] active:scale-[0.99] transition-all shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isSubmitting ? "Processing..." : "Begin Synthesis"}
             </button>
