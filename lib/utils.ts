@@ -110,7 +110,7 @@ export async function parsePDFFile(file: File) {
 
     // Render first page as cover image
     const firstPage = await pdfDocument.getPage(1);
-    const viewport = firstPage.getViewport({ scale: 2 }); // 2x scale for better quality
+    const viewport = firstPage.getViewport({ scale: 1.5 }); // Balanced quality vs memory
 
     const canvas = document.createElement('canvas');
     canvas.width = viewport.width;
@@ -124,7 +124,7 @@ export async function parsePDFFile(file: File) {
     await firstPage.render({
       canvasContext: context,
       viewport: viewport,
-    }).promise;
+    } as any).promise;
 
     // Convert canvas to data URL
     const coverDataURL = canvas.toDataURL('image/png');
@@ -139,7 +139,13 @@ export async function parsePDFFile(file: File) {
           .filter((item) => 'str' in item)
           .map((item) => (item as { str: string }).str)
           .join(' ');
-      fullText += pageText + '\n';
+      fullText += pageText + ' ';
+      
+      // Yield to the event loop every 2 pages to prevent freezing the UI thread
+      // This is more aggressive to ensure network requests don't time out
+      if (pageNum % 2 === 0) {
+        await new Promise(resolve => setTimeout(resolve, 10));
+      }
     }
 
     // Split text into segments for search
