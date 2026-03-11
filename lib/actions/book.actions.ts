@@ -7,6 +7,19 @@ import { serializeData } from "@/lib/utils";
 import { TextSegment } from "@/types";
 import Book from "@/database/models/book.model";
 import BookSegment from "@/database/models/bookSegment.model";
+import { revalidatePath } from "next/cache";
+
+
+export const getAllBooks = async () => {
+    try {
+        await connectToDatabase();
+        const books = await Book.find().sort({ createdAt: -1 }).lean();
+        return { success: true, data: serializeData(books) };
+    } catch (error) {
+        console.error('Error fetching all books:', error);
+        return { success: false, error };
+    }
+}
 
 
 export const checkBookExists = async (title: string) => {
@@ -15,8 +28,10 @@ export const checkBookExists = async (title: string) => {
         const existingBook = await Book.findOne({ title }).lean();
 
         if (existingBook) {
-            return { exists: true, data: serializeData(existingBook) };
+            return { exists: true, book: serializeData(existingBook) };
         }
+
+        return { exists: false, book: null };
         
     } catch (error) {
         console.error('Error checking book existence:', error);
@@ -46,6 +61,7 @@ export const createBook = async (data: CreateBook) => {
 
         const book = await Book.create({ ...data, slug, totalSegments: 0 });
 
+        revalidatePath("/");
 
         return {
             success: true,
@@ -91,6 +107,8 @@ export const saveBookSegments = async (bookId: string, clerkId: string, segments
 
         await BookSegment.deleteMany({ bookId });
         await Book.findByIdAndDelete(bookId);
+
+        return { success: false, error };
     }
 
 

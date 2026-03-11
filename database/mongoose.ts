@@ -23,6 +23,8 @@ export const connectToDatabase = async () => {
     }
 
     if (!cached.promise) {
+        const sanitizedUri = MONGODB_URI.replace(/:([^@]+)@/, ":****@");
+        console.log(`[Mongoose] Connecting to: ${sanitizedUri}`);
         cached.promise = mongoose.connect(MONGODB_URI, {
             bufferCommands: false,
         });
@@ -30,7 +32,9 @@ export const connectToDatabase = async () => {
 
     try {
         cached.conn = await cached.promise;
+        console.log("[Mongoose] Successfully connected to database");
     } catch (e) {
+        console.error("[Mongoose] Connection error:", e);
         cached.promise = null;
         throw e;
     }
