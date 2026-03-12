@@ -577,7 +577,7 @@
      TRANSCRIPT COMPONENT
      =========================================== */
   .transcript-container {
-    @apply w-full bg-white rounded-[14px] h-full min-h-0 flex flex-col;
+    @apply w-full bg-white rounded-[2.5rem] h-full min-h-0 flex flex-col shadow-soft border border-border-subtle overflow-hidden;
   }
   .transcript-messages {
     @apply flex flex-col gap-4 sm:gap-6 p-4 sm:p-6 flex-1 overflow-y-auto scroll-smooth;
@@ -610,13 +610,13 @@
     @apply max-w-[80%] px-6 py-4 text-base font-medium leading-7 rounded-2xl;
   }
   .transcript-bubble-user {
-    @apply bg-accent-blue text-white rounded-2xl rounded-br-none;
+    @apply bg-[#663820] text-white rounded-2xl rounded-br-none;
   }
   .transcript-bubble-assistant {
-    @apply bg-bg-secondary text-text-primary rounded-2xl rounded-bl-none border border-border-subtle;
+    @apply bg-[#f3e4c7] text-[#1D1D1F] rounded-2xl rounded-bl-none border border-[#f3e4c7];
   }
   .transcript-cursor {
-    @apply inline-block w-0.5 h-5 ml-1 bg-black animate-pulse;
+    @apply inline-block w-0.5 h-5 ml-1 bg-current align-middle animate-pulse;
   }
   .transcript-empty {
     @apply flex flex-col items-center justify-center min-h-[350px] text-center flex-1;
