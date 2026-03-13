@@ -112,4 +112,56 @@ export const saveBookSegments = async (bookId: string, clerkId: string, segments
     }
 
 
+
+}
+
+export const getBookBySlug = async (slug: string) => {
+    try {
+        await connectToDatabase();
+        const book = await Book.findOne({ slug }).lean();
+
+        if (!book) {
+            return { success: false, data: null };
+        }
+
+        return { success: true, data: serializeData(book) };
+    } catch (error) {
+        console.error('Error fetching book by slug:', error);
+        return { success: false, error };
+    }
+}
+export const searchBookSegments = async (bookId: string, query: string, limit: number = 3) => {
+    try {
+        await connectToDatabase();
+
+        // Use text search on the content field. Requires a text index on 'content'.
+        // The model definition already includes: BookSegmentSchema.index({ bookId: 1, content: "text" });
+        const segments = await BookSegment.find(
+            { 
+                bookId,
+                $text: { $search: query } 
+            },
+            { score: { $meta: "textScore" } }
+        )
+        .sort({ score: { $meta: "textScore" } })
+        .limit(limit)
+        .lean();
+
+        if (!segments || segments.length === 0) {
+            // Fallback: If no text search results, try a simple regex case-insensitive match
+            const fallbackSegments = await BookSegment.find({
+                bookId,
+                content: { $regex: query, $options: 'i' }
+            })
+            .limit(limit)
+            .lean();
+            
+            return { success: true, data: serializeData(fallbackSegments) };
+        }
+
+        return { success: true, data: serializeData(segments) };
+    } catch (error) {
+        console.error('Error searching book segments:', error);
+        return { success: false, error };
+    }
 }
