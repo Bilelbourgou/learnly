@@ -45,8 +45,27 @@ const VapiControls = ({ book }: { book: IBook }) => {
               )}
             </div>
             <div className="absolute -bottom-4 -right-4">
-              <button onClick={isActive ? stop : start} disabled={status == 'connecting'} className="w-14 h-14 rounded-full bg-text-primary text-white flex items-center justify-center shadow-soft-lg hover:scale-105 active:scale-95 transition-all">
-                {isActive ? <Mic className="w-6 h-6" /> : <MicOff className="w-6 h-6" />}
+              <button 
+                onClick={isActive ? stop : start} 
+                disabled={status == 'connecting'} 
+                className={`w-14 h-14 rounded-full flex items-center justify-center shadow-soft-lg transition-all duration-500 ease-in-out transform hover:scale-110 active:scale-90 relative overflow-hidden
+                  ${isActive 
+                    ? 'bg-accent-blue text-white ring-4 ring-accent-blue/20 animate-pulse' 
+                    : 'bg-text-primary text-white hover:bg-text-primary/90'
+                  }`}
+              >
+                {/* Ripple Effect for Active State */}
+                {isActive && (
+                  <span className="absolute inset-0 rounded-full animate-ping bg-accent-blue/30 opacity-75"></span>
+                )}
+                
+                <div className="relative z-10 transition-all duration-300 transform">
+                  {isActive ? (
+                    <Mic className="w-6 h-6 animate-in zoom-in-50 duration-300" />
+                  ) : (
+                    <MicOff className="w-6 h-6 animate-in fade-in duration-300" />
+                  )}
+                </div>
               </button>
             </div>
           </div>
