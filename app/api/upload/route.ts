@@ -1,4 +1,6 @@
 import { NextResponse } from "next/server";
+
+export const dynamic = 'force-dynamic';
 import { handleUpload, HandleUploadBody } from "@vercel/blob/client"
 import { auth } from "@clerk/nextjs/server"
 import { MAX_FILE_SIZE } from "@/lib/constants";

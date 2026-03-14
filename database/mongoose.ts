@@ -3,10 +3,6 @@ import mongoose from "mongoose";
 
 const MONGODB_URI = process.env.MONGODB_URI;
 
-if (!MONGODB_URI) {
-    throw new Error("Please add your MongoDB URI to .env.local");
-}
-
 declare global {
     var mongooseCache: {
         conn: typeof mongoose | null;
@@ -18,6 +14,9 @@ let cached = global.mongooseCache || (global.mongooseCache = { conn: null, promi
 
 
 export const connectToDatabase = async () => {
+    if (!MONGODB_URI) {
+        throw new Error("Please add your MongoDB URI to .env.local");
+    }
     if (cached.conn) {
         return cached.conn;
     }
