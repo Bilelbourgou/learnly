@@ -10,7 +10,7 @@ import { UploadSchema } from '@/lib/zod';
 // ============================================
 
 export interface IBook extends Document {
-    _id: string;
+    _id: any;
     clerkId: string;
     title: string;
     slug: string;
@@ -38,7 +38,7 @@ export interface IBookSegment extends Document {
 }
 
 export interface IVoiceSession extends Document {
-    _id: string;
+    _id: any;
     clerkId: string;
     bookId: Types.ObjectId;
     startedAt: Date;
