@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Learnly - Your AI-Powered Interactive Library
 
-## Getting Started
+**Learnly** is a state-of-the-art SaaS platform designed to transform static books into interactive, AI-driven learning experiences. By leveraging advanced voice AI and intelligent content processing, Learnly allows users to engage with their reading material in a completely new way.
 
-First, run the development server:
+## 🚀 Core Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **AI-Powered Voice Sessions**: Engage in real-time, interactive voice conversations about your books using [Vapi](https://vapi.ai/).
+- **Intelligent Library Management**: Seamlessly upload and manage your PDF library with [Vercel Blob](https://vercel.com/blob).
+- **Smart Content Segmentation**: Automatic processing of large documents into searchable, context-aware segments.
+- **Contextual Search**: High-performance text search across your library to find specific information instantly.
+- **Secure Authentication**: Robust user management and personalization powered by [Clerk](https://clerk.com/).
+- **Premium Design**: A beautiful, responsive interface built with Tailwind CSS and Radix UI primitives.
+
+## 🛠️ Tech Stack
+
+- **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
+- **Database**: [MongoDB](https://www.mongodb.com/) with [Mongoose](https://mongoosejs.com/)
+- **Authentication**: [Clerk](https://clerk.com/)
+- **Voice AI**: [Vapi](https://vapi.ai/)
+- **Storage**: [Vercel Blob](https://vercel.com/blob)
+- **Validation**: [Zod](https://zod.dev/) & [React Hook Form](https://react-hook-form.com/)
+
+## 🏁 Getting Started
+
+### Prerequisites
+
+- Node.js 18+
+- MongoDB instance
+- Clerk account
+- Vapi account
+- Vercel Blob configuration
+
+### Installation
+
+1. **Clone the repository**:
+   ```bash
+   git clone <repository-url>
+   cd learnly
+   ```
+
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+
+3. **Set up environment variables**:
+   Create a `.env.local` file in the root directory and add your credentials:
+   ```env
+   NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=...
+   CLERK_SECRET_KEY=...
+   MONGODB_URI=...
+   BLOB_READ_WRITE_TOKEN=...
+   VAPI_API_KEY=...
+   ```
+
+4. **Run the development server**:
+   ```bash
+   npm run dev
+   ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `app/`: Next.js App Router pages and API routes.
+- `components/`: Reusable UI components and layout elements.
+- `database/`: Mongoose models and database connection logic.
+- `lib/`: Utility functions, server actions, and shared logic.
+- `public/`: Static assets.
+- `types.ts`: Shared TypeScript interfaces and types.
 
-## Learn More
+## 🌐 Deployment
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The easiest way to deploy Learnly is via the [Vercel Platform](https://vercel.com/new). Make sure to configure all environment variables in your Vercel project settings.
