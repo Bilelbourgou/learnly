@@ -8,18 +8,35 @@ import { TextSegment } from "@/types";
 import Book from "@/database/models/book.model";
 import BookSegment from "@/database/models/bookSegment.model";
 import { revalidatePath } from "next/cache";
+import { getPlanLimits } from "@/lib/subscription";
 
 
-export const getAllBooks = async () => {
+
+export const getAllBooks = async (clerkId?: string, searchQuery?: string) => {
     try {
         await connectToDatabase();
-        const books = await Book.find().sort({ createdAt: -1 }).lean();
+        
+        let query: any = clerkId ? { clerkId } : {};
+        
+        if (searchQuery) {
+            const regex = { $regex: searchQuery, $options: 'i' };
+            query = {
+                ...query,
+                $or: [
+                    { title: regex },
+                    { author: regex }
+                ]
+            };
+        }
+
+        const books = await Book.find(query).sort({ createdAt: -1 }).lean();
         return { success: true, data: serializeData(books) };
     } catch (error) {
         console.error('Error fetching all books:', error);
         return { success: false, error };
     }
 }
+
 
 
 export const checkBookExists = async (title: string) => {
@@ -57,7 +74,18 @@ export const createBook = async (data: CreateBook) => {
             };
         }
 
-        // TODO: Check subscription limits before creating book
+        // Check subscription limits before creating book
+        const limits = await getPlanLimits();
+        const userBooksCount = await Book.countDocuments({ clerkId: data.clerkId });
+
+        if (userBooksCount >= limits.maxBooks) {
+            const errorMsg = `You've reached the limit of ${limits.maxBooks} books for your ${limits.maxBooks === 1 ? 'free' : 'plan'}. Please upgrade to add more books.`;
+            return {
+                success: false,
+                error: errorMsg,
+            };
+        }
+
 
         const book = await Book.create({ ...data, slug, totalSegments: 0 });
 
@@ -67,12 +95,16 @@ export const createBook = async (data: CreateBook) => {
             success: true,
             data: serializeData(book),
         };
-    } catch (error) {
+    } catch (error: any) {
         console.error('Error creating book:', error);
 
-        return { success: false, error };
+        return { 
+            success: false, 
+            error: error instanceof Error ? error.message : "An unexpected error occurred while creating the book." 
+        };
     }
 }
+
 
 export const saveBookSegments = async (bookId: string, clerkId: string, segments: TextSegment[]) => {
 

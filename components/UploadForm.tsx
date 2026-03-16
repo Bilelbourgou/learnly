@@ -140,7 +140,8 @@ const UploadForm = () => {
         fileSize:pdfFile.size,
       })
 
-      if (!book.success) throw new Error("Failed to create book !");
+      if (!book.success) throw new Error(book.error || "Failed to create book !");
+
       
         if (book.alreadyExists){
         toast.info("Book already exists,Please try with another title")
@@ -158,9 +159,9 @@ const UploadForm = () => {
       form.reset();
       router.push(`/`)
 
-    } catch (error) {
+    } catch (error: any) {
       console.error("Upload failed:", error);
-      toast.error("Upload failed");
+      toast.error(error.message || "Upload failed");
     } finally {
       setIsSubmitting(false);
     }

@@ -4,6 +4,17 @@ import { IBook } from "@/types";
 import useVapi from "@/hooks/useVapi";
 import Image from "next/image";
 import Transcript from "./Transcript";
+import { Loader2, Headphones, MessageSquareQuote } from "lucide-react";
+
+/**
+ * Formats seconds into M:SS format
+ */
+const formatTime = (seconds: number) => {
+  const mins = Math.floor(seconds / 60);
+  const secs = seconds % 60;
+  return `${mins}:${secs.toString().padStart(2, '0')}`;
+};
+
 
 const VapiControls = ({ book }: { book: IBook }) => {
   const {
@@ -16,7 +27,10 @@ const VapiControls = ({ book }: { book: IBook }) => {
     start,
     stop,
     clearError,
+    maxDurationSeconds,
+    limitError,
   } = useVapi(book);
+
 
   const proxiedCoverURL =
     book.coverURL && book.coverURL.includes("blob.vercel-storage.com")
@@ -80,10 +94,48 @@ const VapiControls = ({ book }: { book: IBook }) => {
             </p>
 
             <div className="flex flex-wrap gap-3 justify-center md:justify-start">
-              <div className="flex items-center gap-2 px-4 py-1.5 bg-accent-blue/5 border border-accent-blue/20 rounded-full text-sm font-bold text-accent-blue tracking-tight">
-                <span className="w-2 h-2 rounded-full bg-accent-blue animate-pulse"></span>
-                Ready
-              </div>
+              {status === 'idle' && (
+                <div className="flex items-center gap-2 px-4 py-1.5 bg-accent-blue/5 border border-accent-blue/20 rounded-full text-sm font-bold text-accent-blue tracking-tight">
+                  <span className="w-2 h-2 rounded-full bg-accent-blue animate-pulse"></span>
+                  Ready
+                </div>
+              )}
+
+              {status === 'connecting' && (
+                <div className="flex items-center gap-2 px-4 py-1.5 bg-accent-blue/5 border border-accent-blue/10 rounded-full text-sm font-bold text-accent-blue tracking-tight">
+                  <Loader2 className="w-3 h-3 animate-spin" />
+                  Connecting...
+                </div>
+              )}
+
+              {status === 'starting' && (
+                <div className="flex items-center gap-2 px-4 py-1.5 bg-accent-blue/5 border border-accent-blue/10 rounded-full text-sm font-bold text-accent-blue tracking-tight">
+                  <Loader2 className="w-3 h-3 animate-spin" />
+                  Starting...
+                </div>
+              )}
+
+              {status === 'speaking' && (
+                <div className="flex items-center gap-2 px-4 py-1.5 bg-accent-blue/5 border border-accent-blue/20 rounded-full text-sm font-bold text-accent-blue tracking-tight">
+                   <Headphones className="w-3 h-3 animate-pulse" />
+                  AI is speaking...
+                </div>
+              )}
+
+              {status === 'listening' && (
+                <div className="flex items-center gap-2 px-4 py-1.5 bg-bg-secondary border border-accent-blue/20 rounded-full text-sm font-bold text-accent-blue tracking-tight">
+                   <Mic className="w-3 h-3 animate-pulse text-accent-blue" />
+                   Listening...
+                </div>
+              )}
+
+              {status === 'thinking' && (
+                <div className="flex items-center gap-2 px-4 py-1.5 bg-accent-blue/5 border border-accent-blue/10 rounded-full text-sm font-bold text-accent-blue tracking-tight">
+                   <MessageSquareQuote className="w-3 h-3 animate-bounce" />
+                   AI is thinking...
+                </div>
+              )}
+
 
               {book.persona && (
                 <div className="flex items-center gap-2 px-4 py-1.5 bg-bg-secondary border border-border-subtle rounded-full text-sm font-bold text-text-primary tracking-tight">
@@ -91,23 +143,42 @@ const VapiControls = ({ book }: { book: IBook }) => {
                 </div>
               )}
 
-              <div className="flex items-center gap-2 px-4 py-1.5 bg-bg-secondary border border-border-subtle rounded-full text-sm font-bold text-text-secondary tracking-tight">
-                0:00/15:00
+              <div className={`flex items-center gap-2 px-4 py-1.5 bg-bg-secondary border border-border-subtle rounded-full text-sm font-bold tracking-tight transition-colors ${isActive && duration > maxDurationSeconds - 60 ? 'text-red-500 border-red-200 bg-red-50' : 'text-text-secondary'}`}>
+                {formatTime(duration)}/{formatTime(maxDurationSeconds)}
               </div>
+
             </div>
           </div>
         </div>
       </section>
 
       {/* Transcript Area */}
-      <div className="vapi-transcript-wrapper">
-        <Transcript
-          messages={messages}
-          currentMessage={currentMessage}
-          currentUserMessage={currentUserMessage}
-          bookTitle={book.title}
-        />
-      </div>
+      {isActive || messages.length > 0 ? (
+        <div className="vapi-transcript-wrapper">
+          <Transcript
+            messages={messages}
+            currentMessage={currentMessage}
+            currentUserMessage={currentUserMessage}
+            bookTitle={book.title}
+          />
+          {limitError && (
+             <div className="mt-4 p-4 bg-red-50 border border-red-100 rounded-2xl text-red-600 text-sm font-medium animate-in fade-in slide-in-from-top-2">
+                {limitError}
+             </div>
+          )}
+
+        </div>
+      ) : !isActive && !messages.length && (
+          <div className="flex flex-col items-center justify-center p-12 bg-white rounded-[2.5rem] shadow-soft border border-border-subtle text-center">
+             <div className="w-16 h-16 rounded-full bg-bg-secondary flex items-center justify-center mb-4">
+                <Mic className="w-8 h-8 text-text-muted" />
+             </div>
+             <h3 className="text-xl font-bold text-text-primary mb-2">Ready to Chat?</h3>
+             <p className="text-text-secondary max-w-sm">
+                Click the microphone button to start a voice conversation with this book's AI assistant.
+             </p>
+          </div>
+      )}
     </div>
   );
 };
