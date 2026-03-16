@@ -27,23 +27,25 @@ const Navbar = () => {
         <Image src="/logo.png" alt="Logo" width={32} height={20} className="w-auto h-5" />
         <span className='text-lg font-bold tracking-tight text-text-primary uppercase'>Learnly</span>
        </Link> 
-       <nav className='hidden md:flex items-center gap-8'>
-        {navLinks.map(({href,label}) => {
-            const isActive = pathName === href;
-            return (
-                <Link
-                key={label}
-                href={href}
-                className={cn('nav-link-base',
-                    isActive && 'nav-link-active'
-                )}
-                >
-                {label}
-                </Link>
-            )
-        }
-        )}
-       </nav>
+       <SignedIn>
+        <nav className='hidden md:flex items-center gap-8'>
+         {navLinks.map(({href,label}) => {
+             const isActive = pathName === href;
+             return (
+                 <Link
+                 key={label}
+                 href={href}
+                 className={cn('nav-link-base',
+                     isActive && 'nav-link-active'
+                 )}
+                 >
+                 {label}
+                 </Link>
+             )
+         }
+         )}
+        </nav>
+       </SignedIn>
        <div className='flex items-center gap-4'>
         <SignedOut>
           <SignInButton>
